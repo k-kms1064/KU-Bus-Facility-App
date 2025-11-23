@@ -2,7 +2,7 @@ package com.konkuk.ottae.facility
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView    // ← 반드시 추가!
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.konkuk.ottae.R

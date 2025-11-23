@@ -7,13 +7,13 @@
 
 ## 📚 목차
 
-1.  프로젝트 소개\
-2.  주요 기능\
-3.  기술 스택\
-4.  아키텍처\
-5.  실행 방법\
-6.  폴더 구조\
-7.  개발 목적 & 학습 포인트\
+1.  프로젝트 소개
+2.  주요 기능
+3.  기술 스택
+4.  아키텍처
+5.  실행 방법
+6.  폴더 구조
+7.  개발 목적 & 학습 포인트
 8.  향후 확장 기능
 
 ------------------------------------------------------------------------
@@ -23,8 +23,8 @@
 **건대 어때**는 건국대학교 글로컬 캠퍼스 학생들을 위한\
 생활 밀착형 Android 애플리케이션입니다.
 
--   버스 도착 정보\
--   주변 편의시설 탐색\
+-   버스 도착 정보
+-   주변 편의시설 탐색
 -   즐겨찾기 관리
 
 학생들의 실제 요구를 기반으로 설계된 실용 앱입니다.
@@ -57,16 +57,17 @@
 
 ------------------------------------------------------------------------
 
-# 🧩 기술 스택
+## 🧩 기술 스택
 
-Category       Tech
-  -------------- ------------------------------------------------
-Language       Kotlin
-UI             ViewBinding, Material Components, RecyclerView
-Data           Room DB, LiveData
-Architecture   MVVM 일부 적용
-Build          Gradle Kotlin DSL
-Layout         XML, Drawable
+| 구분 | 기술 |
+|------|------|
+| **Language** | Kotlin |
+| **UI** | ViewBinding, Material Components, RecyclerView |
+| **Data** | Room Database, LiveData |
+| **Architecture** | MVVM 일부 적용, Repository 패턴 |
+| **Build** | Gradle Kotlin DSL |
+| **Layout** | XML, Drawable |
+
 
 ------------------------------------------------------------------------
 
@@ -99,9 +100,9 @@ Layout         XML, Drawable
 
 ## ▶ Android Studio
 
-1.  Android Studio 실행\
-2.  File → Open → 프로젝트 선택\
-3.  에뮬레이터 또는 기기 연결\
+1.  Android Studio 실행
+2.  File → Open → 프로젝트 선택
+3.  에뮬레이터 또는 기기 연결
 4.  Run ▶ 실행
 
 ------------------------------------------------------------------------
@@ -132,10 +133,31 @@ Layout         XML, Drawable
     └── src/main/
         ├── java/com/konkuk/ottae/
         │    ├── bus/
+        │    │  ├── BusAdapter.kt
+        │    │  ├── BusArrivalActivity.kt
+        │    │  ├── BusCategoryActivity.kt
+        │    │  ├── BusItem.kt               # 버스 도착 정보 데이터 클래스
+        │    │  ├── BusPagerAdapter.kt
+        │    │  ├── SimpleBusAdapter.kt      # 간단 버스 정보 데이터 클래스
+        │    │  └── SimpleBusItem.kt
+        │    │
         │    ├── facility/
+        │    │  ├── Facility.kt
+        │    │  ├── FacilityAdapter.kt
+        │    │  ├── FacilityCategoryActivity.kt
+        │    │  └── FacilityListActivity.kt
+        │    │
         │    ├── favorite/
-        │    ├── AppDatabase.kt
-        │    └── MainActivity.kt
+        │    │  ├── FavoriteDao.kt
+        │    │  ├── FavoriteEntity.kt
+        │    │  ├── FavoriteListActivity.kt
+        │    │  ├── FavoriteListAdapter.kt
+        │    │  ├── FavoriteRepository.kt
+        │    │  ├── FavoriteViewModel.kt
+        │    │  └── FavoriteViewModelFactory.kt
+        │    │
+        │    ├── AppDatabase.kt              # 앱 홈 화면 (버스/시설/즐겨찾기 진입)  
+        │    └── MainActivity.kt             # Room Database 설정
         │
         ├── res/layout/
         ├── res/drawable/
@@ -146,20 +168,20 @@ Layout         XML, Drawable
 
 # ⚙ 개발 목적 & 학습 포인트
 
--   Activity/Intent 구조 학습\
--   RecyclerView + Adapter 기반 리스트 UI\
--   Room 기반 영구 데이터 저장\
--   MVVM 일부 적용\
--   Android Material Components 활용\
+-   Activity/Intent 구조 학습
+-   RecyclerView + Adapter 기반 리스트 UI
+-   Room 기반 영구 데이터 저장
+-   MVVM 일부 적용
+-   Android Material Components 활용
 -   실무 확장 가능 구조 설계
 
 ------------------------------------------------------------------------
 
 # 🌈 향후 확장 기능
 
--   TAGO API 기반 실시간 데이터 연동\
--   Kakao/Naver 지도 기반 시설 위치 표시\
--   Hilt 기반 DI 구조\
--   Coroutine & Flow\
--   다크 모드 지원\
+-   TAGO API 기반 실시간 데이터 연동
+-   Kakao/Naver 지도 기반 시설 위치 표시
+-   Hilt 기반 DI 구조
+-   Coroutine & Flow
+-   다크 모드 지원
 -   시설 상세 정보 페이지 추가
