@@ -2,6 +2,7 @@ package com.konkuk.ottae.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.konkuk.ottae.R
@@ -18,7 +19,6 @@ class FavoriteListActivity : AppCompatActivity() {
         recycler = findViewById(R.id.recyclerFavorites)
         recycler.layoutManager = LinearLayoutManager(this)
 
-        // 개발 단계: 더미 FavoriteEntity 데이터
         val dummyList = listOf(
             FavoriteEntity("스타벅스", "카페"),
             FavoriteEntity("홍콩반점", "중식"),
@@ -26,7 +26,10 @@ class FavoriteListActivity : AppCompatActivity() {
             FavoriteEntity("백다방", "카페")
         )
 
-        adapter = FavoriteListAdapter(dummyList)
+        adapter = FavoriteListAdapter(dummyList) { clickedItem ->
+            Toast.makeText(this, "${clickedItem.name} 즐겨찾기 클릭됨", Toast.LENGTH_SHORT).show()
+        }
+
         recycler.adapter = adapter
     }
 }

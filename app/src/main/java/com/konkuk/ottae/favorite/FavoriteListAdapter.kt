@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.konkuk.ottae.R
 
 class FavoriteListAdapter(
-    private val items: List<FavoriteEntity> = emptyList()
+    private val items: List<FavoriteEntity> = emptyList(),
+    private val onItemClick: (FavoriteEntity) -> Unit = {}
 ) : RecyclerView.Adapter<FavoriteListAdapter.FavoriteViewHolder>() {
 
     inner class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,6 +27,10 @@ class FavoriteListAdapter(
         val item = items[position]
         holder.txtName.text = item.name
         holder.txtCategory.text = item.category
+
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int = items.size
