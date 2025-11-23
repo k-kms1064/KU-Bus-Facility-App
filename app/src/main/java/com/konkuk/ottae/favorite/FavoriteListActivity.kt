@@ -1,35 +1,40 @@
 package com.konkuk.ottae.favorite
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProvider
+import com.konkuk.ottae.AppDatabase
 import com.konkuk.ottae.R
 
 class FavoriteListActivity : AppCompatActivity() {
 
-    private lateinit var recycler: RecyclerView
+    private lateinit var viewModel: FavoriteViewModel
     private lateinit var adapter: FavoriteListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_list)
 
-        recycler = findViewById(R.id.recyclerFavorites)
-        recycler.layoutManager = LinearLayoutManager(this)
+        findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
 
-        val dummyList = listOf(
-            FavoriteEntity("스타벅스", "카페"),
-            FavoriteEntity("홍콩반점", "중식"),
-            FavoriteEntity("맘스터치", "버거"),
-            FavoriteEntity("백다방", "카페")
-        )
+        val dao = AppDatabase.getDatabase(this).favoriteDao()
+        val repository = FavoriteRepository(dao)
+        viewModel = ViewModelProvider(
+            this,
+            FavoriteViewModelFactory(repository)
+        )[FavoriteViewModel::class.java]
 
-        adapter = FavoriteListAdapter(dummyList) { clickedItem ->
-            Toast.makeText(this, "${clickedItem.name} 즐겨찾기 클릭됨", Toast.LENGTH_SHORT).show()
+        val recyclerView = findViewById<RecyclerView>(R.id.favoriteRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        adapter = FavoriteListAdapter(emptyList(), viewModel)
+        recyclerView.adapter = adapter
+
+        viewModel.getAllFavorites { list ->
+            adapter.updateList(list)
         }
-
-        recycler.adapter = adapter
     }
 }
