@@ -1,34 +1,17 @@
 package com.konkuk.ottae.favorite
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModelProvider
 
-class FavoriteViewModel(private val repository: FavoriteRepository) : ViewModel() {
+class FavoriteViewModelFactory(
+    private val repository: FavoriteRepository
+) : ViewModelProvider.Factory {
 
-    fun addFavorite(favorite: FavoriteEntity) {
-        viewModelScope.launch {
-            repository.addFavorite(favorite)
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return FavoriteViewModel(repository) as T
         }
-    }
-
-    fun removeFavorite(favorite: FavoriteEntity) {
-        viewModelScope.launch {
-            repository.removeFavorite(favorite)
-        }
-    }
-
-    fun isFavorite(facilityId: Int, callback: (Boolean) -> Unit) {
-        viewModelScope.launch {
-            val result = repository.isFavorite(facilityId)
-            callback(result)
-        }
-    }
-
-    fun getAllFavorites(callback: (List<FavoriteEntity>) -> Unit) {
-        viewModelScope.launch {
-            val result = repository.getAllFavorites()
-            callback(result)
-        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
