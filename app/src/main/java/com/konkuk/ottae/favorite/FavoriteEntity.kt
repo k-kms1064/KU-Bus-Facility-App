@@ -1,6 +1,10 @@
 package com.konkuk.ottae.favorite
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "favorites")
 data class FavoriteEntity(
-    val name: String,
-    val category: String
+    @PrimaryKey val facilityId: Int,
+    val facilityName: String
 )
