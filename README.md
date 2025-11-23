@@ -14,7 +14,6 @@
 5.  실행 방법
 6.  폴더 구조
 7.  개발 목적 & 학습 포인트
-8.  향후 확장 기능
 
 ------------------------------------------------------------------------
 
@@ -133,30 +132,27 @@
     └── src/main/
         ├── java/com/konkuk/ottae/
         │    ├── bus/
-        │    │  ├── BusAdapter.kt
-        │    │  ├── BusArrivalActivity.kt
-        │    │  ├── BusCategoryActivity.kt
-        │    │  ├── BusItem.kt               # 버스 도착 정보 데이터 클래스
-        │    │  ├── BusPagerAdapter.kt
-        │    │  ├── SimpleBusAdapter.kt      # 간단 버스 정보 데이터 클래스
-        │    │  └── SimpleBusItem.kt
+        │    │  ├── BusAdapter.kt                   # 버스 리스트 RecyclerView 어댑터
+        │    │  ├── BusArrivalActivity.kt           # 버스 도착 정보 표시 화면
+        │    │  ├── BusCategoryActivity.kt          # 버스 정류장 선택 화면
+        │    │  └── BusItem.kt                      # 버스 도착 정보 데이터 클래스
         │    │
         │    ├── facility/
-        │    │  ├── Facility.kt
-        │    │  ├── FacilityAdapter.kt
-        │    │  ├── FacilityCategoryActivity.kt
-        │    │  └── FacilityListActivity.kt
+        │    │  ├── Facility.kt                     # 편의시설 정보 데이터 클래스
+        │    │  ├── FacilityAdapter.kt              # 편의시설 리스트 어댑터
+        │    │  ├── FacilityCategoryActivity.kt     # 편의시설 카테고리 선택 화면
+        │    │  └── FacilityListActivity.kt         # 편의시설 목록 화면
         │    │
         │    ├── favorite/
-        │    │  ├── FavoriteDao.kt
-        │    │  ├── FavoriteEntity.kt
-        │    │  ├── FavoriteListActivity.kt
-        │    │  ├── FavoriteListAdapter.kt
-        │    │  ├── FavoriteRepository.kt
-        │    │  ├── FavoriteViewModel.kt
-        │    │  └── FavoriteViewModelFactory.kt
+        │    │  ├── FavoriteDao.kt                  # DAO (Insert/Delete/Query)
+        │    │  ├── FavoriteEntity.kt               # Room 엔티티
+        │    │  ├── FavoriteListActivity.kt         # 즐겨찾기 화면
+        │    │  ├── FavoriteListAdapter.kt          # 즐겨찾기 리스트 어댑터
+        │    │  ├── FavoriteRepository.kt           # DB Repository
+        │    │  ├── FavoriteViewModel.kt            # ViewModel (LiveData)
+        │    │  └── FavoriteViewModelFactory.kt     # ViewModel 생성용 Factory 클래스
         │    │
-        │    ├── AppDatabase.kt              # 앱 홈 화면 (버스/시설/즐겨찾기 진입)  
+        │    ├── AppDatabase.kt              # 앱 홈 화면 (버스/편의시설/즐겨찾기 진입)  
         │    └── MainActivity.kt             # Room Database 설정
         │
         ├── res/layout/
@@ -174,14 +170,3 @@
 -   MVVM 일부 적용
 -   Android Material Components 활용
 -   실무 확장 가능 구조 설계
-
-------------------------------------------------------------------------
-
-# 🌈 향후 확장 기능
-
--   TAGO API 기반 실시간 데이터 연동
--   Kakao/Naver 지도 기반 시설 위치 표시
--   Hilt 기반 DI 구조
--   Coroutine & Flow
--   다크 모드 지원
--   시설 상세 정보 페이지 추가
