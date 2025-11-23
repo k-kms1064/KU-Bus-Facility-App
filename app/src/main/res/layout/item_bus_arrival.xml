@@ -4,21 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="14dp"
+    android:background="#F5F5F5"
+    android:layout_marginBottom="10dp">
 
     <TextView
         android:id="@+id/txtRouteName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="600번"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="17sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txtArrivalInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5분 후 도착"
-        android:layout_marginTop="4dp"/>
-
+        android:textSize="15sp"
+        android:layout_marginTop="6dp"/>
 </LinearLayout>
