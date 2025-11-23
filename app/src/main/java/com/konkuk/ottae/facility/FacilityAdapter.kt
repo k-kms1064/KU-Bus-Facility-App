@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.konkuk.ottae.R
 
 class FacilityAdapter(
-    private val items: List<Facility> = emptyList()
+    private val items: List<Facility> = emptyList(),
+    private val onItemClick: (Facility) -> Unit = {}
 ) : RecyclerView.Adapter<FacilityAdapter.FacilityViewHolder>() {
 
     inner class FacilityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,6 +27,10 @@ class FacilityAdapter(
         val item = items[position]
         holder.txtName.text = item.name
         holder.txtCategory.text = item.category
+
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int = items.size
