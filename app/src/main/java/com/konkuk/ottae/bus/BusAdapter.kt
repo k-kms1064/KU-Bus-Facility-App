@@ -7,9 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.konkuk.ottae.R
 
-class BusAdapter(
-    private val items: List<BusItem> = emptyList()
-) : RecyclerView.Adapter<BusAdapter.BusViewHolder>() {
+class BusAdapter(private val items: List<BusItem>) :
+    RecyclerView.Adapter<BusAdapter.BusViewHolder>() {
 
     inner class BusViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtRouteName: TextView = itemView.findViewById(R.id.txtRouteName)
