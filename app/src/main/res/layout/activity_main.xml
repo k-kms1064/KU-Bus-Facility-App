@@ -7,24 +7,22 @@
     android:padding="28dp"
     android:background="@drawable/bg_main_gradient">
 
-    <!-- 상단 로고/타이틀 -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="건대어때"
-        android:textColor="#FFFFFF"
-        android:textSize="42sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
         android:shadowColor="#55000000"
         android:shadowDx="0"
         android:shadowDy="4"
-        android:shadowRadius="10" />
+        android:shadowRadius="10"
+        android:text="건대어때"
+        android:textColor="#FFFFFF"
+        android:textSize="42sp"
+        android:textStyle="bold" />
 
-    <!-- 공통 버튼 스타일 -->
     <LinearLayout
         android:id="@+id/btnBus"
         android:layout_width="match_parent"
@@ -101,5 +99,19 @@
             android:textColor="#000000"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/appDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="건국대학교 글로컬 캠퍼스 학생을 위한\n버스 · 편의시설 · 즐겨찾기 통합 앱"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:shadowColor="#55000000"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="8" />
 
 </LinearLayout>
