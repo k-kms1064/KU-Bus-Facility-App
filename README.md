@@ -162,6 +162,26 @@
 
 ------------------------------------------------------------------------
 
+# 📸 스크린샷
+
+## 🚍 버스 도착 정보 화면
+<p align="center">
+  <img src="docs/images/bus_arrival.png" width="280">
+</p>
+
+## 🍽️ 편의시설 목록 화면
+<p align="center">
+  <img src="docs/images/facility_list.png" width="280">
+</p>
+
+## ⭐ 즐겨찾기 화면
+<p align="center">
+  <img src="docs/images/favorite_list.png" width="280">
+</p>
+
+------------------------------------------------------------------------
+
+
 # ⚙ 개발 목적 & 학습 포인트
 
 -   Activity/Intent 구조 학습
