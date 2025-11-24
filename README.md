@@ -48,6 +48,8 @@
 
 -   **네트워킹: OkHttp** 라이브러리를 직접 사용하여 API를 호출하고 JSON 응답을 파싱하여 처리합니다.
 
+-   **오류 처리:** API 통신 실패 시 (네트워크 오류, 서버 응답 오류 등) 사용자에게 명확한 **에러 메시지 UI**를 표시하고 재시도 기능을 제공하여 안정성을 확보했습니다.
+
 -   **실시간 처리:** 도착 예정 시간을 기준으로 **자동 정렬**되며, 15초 주기로 타이머를 설정하여 화면 정보를 **자동 갱신**합니다.
 
 -   **UI 구성: RecyclerView** 기반으로 버스 목록을 표시하며, 노선명, 도착 예정 시간(분), 잔여 정류장 수, 상행/하행 방향을 상세하게 보여줍니다.
@@ -112,6 +114,14 @@
 
     Activity → ViewModel → Repository → DAO → Room DB
                         ↑ LiveData observe
+
+## 책임 분리 (Separation of Concerns)
+
+-   **Activity/View:** UI 렌더링 및 사용자 이벤트 처리 역할만 담당.
+
+-   **ViewModel:** View와 Repository 사이의 데이터 중개자 역할. LiveData를 통해 UI에게 데이터의 변화를 알림.
+
+-   **Repository:** 데이터 소스(Room DB, TAGO API)와의 통신을 담당하며, ViewModel에게 **순수한 데이터**를 제공하여 비즈니스 로직을 캡슐화.
 
 ------------------------------------------------------------------------
 
@@ -203,6 +213,7 @@
 # ⚙ 개발 목적 & 학습 포인트
 
 -   Activity/Intent 구조 학습
+-   외부 API 연동 및 네트워킹 처리 (OkHttp)
 -   RecyclerView + Adapter 기반 리스트 UI
 -   Room 기반 영구 데이터 저장
 -   MVVM 일부 적용
@@ -215,6 +226,7 @@
 
 - Kotlin Android라는 낯선 기술 스택을 빠르게 분석하고 프로젝트에 적용
 - Room + ViewModel + Repository 구조를 직접 설계하며 MVVM 감각 확보
+- **Kotlin Coroutines**를 활용한 비동기 프로그래밍 및 DB 트랜잭션 처리 경험
 - RecyclerView·Adapter 패턴에 대한 이해 심화
 - UI/로직 분리를 통한 유지보수성 향상
 - Git commit 단위의 기능별 관리, 문서화 역량 상승
